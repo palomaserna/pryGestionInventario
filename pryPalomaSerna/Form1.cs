@@ -21,5 +21,11 @@ namespace pryPalomaSerna
         {
 
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            clsConexionBD objConectarBD = new clsConexionBD();
+            objConectarBD.ConectarBD();
+        }
     }
 }
