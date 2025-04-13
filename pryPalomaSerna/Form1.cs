@@ -26,6 +26,76 @@ namespace pryPalomaSerna
         {
             clsConexionBD objConectarBD = new clsConexionBD();
             objConectarBD.ConectarBD();
+            clsConexionBD BD=new clsConexionBD();
+            BD.Obtener(dgvProductos);
+
+
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clsProducto producto = new clsProducto();
+                clsConexionBD BD = new clsConexionBD();
+                producto.Codigo = Convert.ToInt32(numCodigo.Value);
+                producto.Nombre = txtNombre.Text;
+                producto.Descripcion = txtDescripcion.Text;
+                producto.Precio = txtPrecio.Text;
+                producto.Stock = Convert.ToInt32(numStock.Value);
+                producto.Categoria = txtCategorias.Text;
+
+                BD.Agregar(producto);
+                BD.Obtener(dgvProductos);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se agrego el producto");
+            }
+            txtNombre.Text = "";
+            txtDescripcion.Text = "";
+            txtPrecio.Text = "";
+            numStock.Value = 0;
+            txtCategorias.Text = "";
+
+        }
+
+        private void btnCambiar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                clsProducto producto = new clsProducto();
+                clsConexionBD BD = new clsConexionBD();
+                producto.Codigo = Convert.ToInt32(numCodigo.Value);
+                producto.Nombre = txtNombre.Text;
+                producto.Descripcion = txtDescripcion.Text;
+                producto.Precio = txtPrecio.Text;
+                producto.Stock = Convert.ToInt32(numStock.Value);
+                producto.Categoria = txtCategorias.Text;
+
+                BD.Modificar(producto);
+                BD.Obtener(dgvProductos);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"No se agrego el producto");
+            }
+            txtNombre.Text = "";
+            txtDescripcion.Text = "";
+            txtPrecio.Text = "";
+            numStock.Value = 0;
+            txtCategorias.Text = "";
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            clsProducto codigo= new clsProducto();
+            clsConexionBD BD = new clsConexionBD();
+            codigo.Codigo= Convert.ToInt32(numCodigo.Value);
+            BD.Modificar(codigo);
+            BD.Obtener(dgvProductos);
         }
     }
 }
