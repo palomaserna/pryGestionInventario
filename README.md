@@ -1,1 +1,1 @@
-# pryGestionInventario
+# prySernaConexionBD
